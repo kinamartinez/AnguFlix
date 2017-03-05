@@ -1,0 +1,33 @@
+body{
+    background-color: #eee;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    background: #e74c3c;
+}
+
+h4{
+    float: right;
+    margin-right: 10%;
+}
+hr{
+    border-top: 1px solid white;
+}
+#allMoviesContainer{
+    margin: 0 60px 0 60px;
+}
+
+.form-control{
+    height: 34px;
+    width: 300px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border-radius: 4px;
+}
+image{
+    width: 400px;
+    height: 400px;
+}

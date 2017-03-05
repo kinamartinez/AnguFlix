@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+
+    <title>Anguflix</title>
+</head>
+<body>
+
+
+<div class="myColectioncontainer" ng-controller="myCollectionCtrl as ctrl">
+    <div class="jumbotron">
+        <div class="container">
+            <h2>My Collection</h2>
+            <div class="col-lg-3 pull-right">
+            <div class=" input-group" id="remainingBudget">
+                <input type="text" class="form-control" ng-model="wallet" placeholder="Enter your Budget">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="test(wallet)">Go</button>
+                </span>
+            </div>
+            <h3>my budget is: {{myCollection.budget | currency}}</h3>
+</div>
+
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="movieTitle" placeholder="Search by title">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-4">
+                    <div class="input-group">
+
+                        <select class="form-control" placeholder="Search by year" ng-model="movieYear">
+                            <option ng-repeat="year in yearArr">{{year}}</option>
+                        </select>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <div class="pull-right" style="margin:10px">
+
+                <a href="#" class="remove-button"><span id="bin">
+                        <i ng-click="trashBtn()" ng-show="!trashClicked.content" class="fa fa-trash-o fa-2x pull-right"
+                           style="margin:10px"
+                           aria-hidden="true"></i>
+                        <i ng-click="trashBtn()" ng-hide="!trashClicked.content"
+                           class="pull-right fa fa-check-circle fa-2x"
+                           style="margin:10px" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </div>
+        </div><!-- /.row -->
+
+    </div>
+    <div ng-show="myCollection.length == 0">
+        <h2> Select movies from below to add to your collection </h2>
+    </div>
+
+
+    <div class="row movies">
+        <div class="col-md-4 movie"
+             ng-repeat="movie in myCollection.films| filter: {movieName:movieTitle, movieYear:movieYear} track by $index">
+            <a href="#" class="thumbnail movieImg">
+                <img ng-src="{{movie.movieImg}}">
+            </a>
+            <div ng-click="removeMovie($index)" ng-show="trashClicked.content" class="pull-right"
+                 style="margin:10px"><a href="#" class="remove-button"><span><i
+                    class="fa fa-trash-o fa-1.5x" aria-hidden="true"></i></span></a></div>
+            <div class="movieDescr">
+                <h3>{{movie.movieName}}{{movie.movieYear}}</h3>
+                <p>{{movie.movieComment}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+
+
+<div id="allMoviesContainer" ng-controller="allMoviesCtrl">
+    <h2>All Movies</h2>
+
+    <div class="form-group col-md-4">
+        <input type="text" class="form-control" ng-model="movieTitle" placeholder="Search by title"/>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="input-group">
+            <input class="form-control" type="text" ng-model="film" placeholder="Search OMDB">
+            <span class="input-group-btn">
+        <button class="btn btn-default omdbSearch" ng-click="search()" type="button">Search</button>
+    </span></div>
+    </div>
+
+
+    <div class="row movies">
+        <div class="col-md-4 movie"
+             ng-repeat="newMovie in movies |  filter: {movieName:movieTitle, movieYear:movieYear} track by $index"
+             ng-click="addToMyCollection(newMovie, alertuser)">
+            <a href="#" class="thumbnail movieImg">
+                <img ng-src="{{newMovie.movieImg}}" alt="...">
+            </a>
+            <div class="movieDescr">
+                <h3>{{newMovie.movieName}}{{newMovie.movieYear}}</h3>
+                <p>{{newMovie.movieComment}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+<script src="service.js"></script>
+<script src="controllers.js"></script>
+<script src="myCollectionControllers.js"></script>
+
+</body>
+</html>
