@@ -2,7 +2,7 @@
  * Created by karina on 03/03/17.
  */
 "use strict";
-app.controller("myCollectionCtrl", ["$scope", "allMovies", function ($scope, allMovies) {
+app.controller("myCollectionCtrl", ["$scope", "allMovies" , function ($scope, allMovies) {
 
     $scope.myCollection = allMovies.myCollection;
 
@@ -23,8 +23,10 @@ app.controller("myCollectionCtrl", ["$scope", "allMovies", function ($scope, all
     $scope.test = allMovies.test;
 
     $scope.budget = allMovies.budget;
-}]);
 
+
+
+}]);
 
 
 

@@ -1,15 +1,15 @@
 body{
-    background-color: #eee;
+    background-color: black;
     font-family: 'Roboto', sans-serif;
 }
-.container{
-    background: #e74c3c;
+.netflix{
+    background: #e50914;
 }
 
-h4{
-    float: right;
-    margin-right: 10%;
+.jumbotron{
+    background-color: black;
 }
+
 hr{
     border-top: 1px solid white;
 }
@@ -27,7 +27,10 @@ hr{
     background-color: #fff;
     border-radius: 4px;
 }
-image{
-    width: 400px;
-    height: 400px;
+
+h2{
+    color: white;
+}
+img{
+    align-content: center;
 }

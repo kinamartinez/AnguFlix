@@ -63,12 +63,12 @@ app.service('allMovies', function () {
 
         for (var i = 0; i < myCollection.films.length; i++) {
             //      console.log(obj.movieName);
-            if (myCollection.films[i].movieName === movie.movieName) {
+            if (myCollection.films[i].Title === movie.Title) {
                 return cb("Already added")
             }
         }
 
-
+console.log(movie);
         myCollection.films.push(movie);
         myCollection.budget -= movie.price;
         cb(null)
@@ -102,6 +102,7 @@ app.service('allMovies', function () {
         }
         console.log(yearArr)
     };
+
 
 
     return {
